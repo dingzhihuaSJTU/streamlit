@@ -1,3 +1,7 @@
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_community.document_loaders.markdown import UnstructuredMarkdownLoader
 import re
