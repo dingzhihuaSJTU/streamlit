@@ -1,3 +1,7 @@
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 import streamlit as st
 from langchain_openai import ChatOpenAI
 import os
@@ -13,6 +17,8 @@ from knowledge_chroma import creat_db
 import json
 from datetime import datetime
 import glob
+
+
 
 # 检测知识库文件夹和向量库目录的最新修改时间
 def get_latest_mtime(path):
@@ -381,3 +387,4 @@ def main():
 if __name__ == "__main__":
     
     main()
+
