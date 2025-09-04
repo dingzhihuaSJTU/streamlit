@@ -7,7 +7,7 @@ from langchain_core.runnables import RunnableBranch, RunnablePassthrough
 import sys
 sys.path.append("../") # 将父目录放入系统路径中
 from openai_embedding import OpenAIEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_chroma.vectorstores import Chroma
 from chat_llm import get_llm
 from knowledge_chroma import creat_db
 import json
