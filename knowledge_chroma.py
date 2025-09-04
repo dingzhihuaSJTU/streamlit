@@ -2,7 +2,7 @@ from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_community.document_loaders.markdown import UnstructuredMarkdownLoader
 import re
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain.vectorstores.chroma import Chroma
+from langchain_chroma import Chroma
 from openai_embedding import OpenAIEmbeddings
 import os
 
