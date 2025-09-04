@@ -272,6 +272,8 @@ def main():
         st.markdown("### 上传PDF文件")
         uploaded_file = st.file_uploader("选择PDF文件", type=["pdf"])
         pdf_save_path = "./database/knowledge/"
+        if not os.path.exists(pdf_save_path):
+            os.makedirs(pdf_save_path, exist_ok=True)
         if uploaded_file is not None:
             if uploaded_file.type != "application/pdf":
                 st.error("仅支持PDF文件！")
@@ -377,4 +379,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
