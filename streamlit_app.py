@@ -376,8 +376,11 @@ def main():
         st.session_state.messages.append(("ai", output))
         save_chat_history(st.session_state.messages)
     # with col_history:
+    # 在主页面和所有入口处加判断
+    if not st.session_state.get("openai_api_key"):
+        st.warning("请在左侧填写有效的 OpenAI API Key 后再进行操作！")
+        st.stop()  # 直接终止后续执行
 
 if __name__ == "__main__":
+    
     main()
-
-
