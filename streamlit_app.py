@@ -233,6 +233,7 @@ def main():
         st.markdown("---")
         st.markdown("#### API密钥与模型参数")
         openai_api_key = st.text_input("请输入 OpenAI API Key", value=st.session_state.get("openai_api_key", ""), type="password")
+        openai_api_key = "sk-uszyreefexvdopscbjxakhdutiyakoetlucxmbgbrkudhtrq"
         st.session_state.openai_api_key = openai_api_key
         temperature = st.slider(
             label="模型风格",
@@ -384,3 +385,4 @@ def main():
 if __name__ == "__main__":
     
     main()
+
