@@ -320,7 +320,15 @@ def main():
         pdf_files_list = [f for f in os.listdir(pdf_save_path) if f.endswith('.pdf')]
         if pdf_files_list:
             for pdf_file in pdf_files_list:
-                st.write(f"- {pdf_file}")
+                col_name, col_del = st.columns([8,1])
+                with col_name:
+                    st.write(f"- {pdf_file}")
+                with col_del:
+                    if st.button("x", key=f"del_{pdf_file}", help="删除该PDF文件"):
+                        os.remove(os.path.join(pdf_save_path, pdf_file))
+                        st.success(f"刷新页面")
+                        # st.session_state["_pdf_deleted"] = True  # 标记触发刷新
+                        # st.stop()  # 终止本次渲染，下一次会自动刷新
         else:
             st.info("知识库目录下暂无PDF文件。")
 
@@ -331,10 +339,17 @@ def main():
         if chat_files:
             for chat_file in chat_files:
                 chat_title = os.path.basename(chat_file).replace('.json','')
-                if st.button(chat_title, key=f"load_{chat_title}"):
-                    if st.session_state.get('chat_file') != chat_file:
-                        st.session_state.messages = load_chat_history(chat_file)
-                        st.session_state.chat_file = chat_file
+                col_title, col_del = st.columns([8,1])
+                with col_title:
+                    if st.button(chat_title, key=f"load_{chat_title}"):
+                        if st.session_state.get('chat_file') != chat_file:
+                            st.session_state.messages = load_chat_history(chat_file)
+                            st.session_state.chat_file = chat_file
+                with col_del:
+                    if st.button("x", key=f"del_chat_{chat_title}", help="删除该聊天记录"):
+                        os.remove(chat_file)
+                        st.success(f"刷新页面")
+                        # st.stop()  # 删除后刷新页面
         else:
             st.info("暂无历史聊天记录。")
 
@@ -392,5 +407,6 @@ def main():
 if __name__ == "__main__":
     
     main()
+
 
 
