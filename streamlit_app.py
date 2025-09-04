@@ -376,10 +376,8 @@ def main():
         st.session_state.messages.append(("ai", output))
         save_chat_history(st.session_state.messages)
     # with col_history:
+    
 
 if __name__ == "__main__":
     
     main()
-
-
-
