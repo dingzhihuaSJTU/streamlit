@@ -18,7 +18,7 @@ class OpenAIEmbeddings(Embeddings):
         self.client = OpenAI(api_key=api_key, 
                 base_url="https://api.siliconflow.cn/v1")
         if model == None:
-            model="netease-youdao/bce-embedding-base_v1"
+            model="Qwen/Qwen3-Embedding-8B"
         self.model = model
     
     def embed_documents(self, texts: List[str]) -> List[List[float]]:
